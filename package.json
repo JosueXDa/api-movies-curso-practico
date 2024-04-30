@@ -1,0 +1,19 @@
+{
+  "name": "api-movies-curso-practico",
+  "version": "1.0.0",
+  "description": "Curso practico de consumo de api rest",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JosueXDa/api-movies-curso-practico.git"
+  },
+  "author": "JosueXDa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JosueXDa/api-movies-curso-practico/issues"
+  },
+  "homepage": "https://github.com/JosueXDa/api-movies-curso-practico#readme"
+}
