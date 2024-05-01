@@ -1,30 +1,44 @@
+const api = axios.create({
+    baseURL: 'https://api.themoviedb.org/3/',
+    headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+    },
+    params: {
+        api_key: API_KEY
+    },
+});
+
+
+
 async function getTrendingMovies(){
-    const res = await fetch('https://api.themoviedb.org/3/trending/movie/day?api_key=' + API_KEY);
-    const data = await res.json();
+    try {
+        const { data } = await api('trending/movie/day');
+        
+        const movies = data.results;
+        console.log(movies)
 
-    const movies = data.results;
-    console.log(movies)
+        movies.forEach(movie => {
+            const trendingPreviewMovieCOntainer = document.querySelector('#trendingPreview .trendingPreview-movieList');
+            const movieContainer = document.createElement('div');
+            movieContainer.classList.add('movie-container');
 
-    movies.forEach(movie => {
-        const trendingPreviewMovieCOntainer = document.querySelector('#trendingPreview .trendingPreview-movieList');
-        const movieContainer = document.createElement('div');
-        movieContainer.classList.add('movie-container');
+            const movieImg = document.createElement('img');
+            movieImg.classList.add('movie-img');
 
-        const movieImg = document.createElement('img');
-        movieImg.classList.add('movie-img');
+            movieImg.setAttribute('alt', movie.title);
+            movieImg.setAttribute('src', 'https://image.tmdb.org/t/p/w300/' + movie.poster_path);
 
-        movieImg.setAttribute('alt', movie.title);
-        movieImg.setAttribute('src', 'https://image.tmdb.org/t/p/w300/' + movie.poster_path);
+            movieContainer.appendChild(movieImg);
+            trendingPreviewMovieCOntainer.appendChild(movieContainer);
 
-        movieContainer.appendChild(movieImg);
-        trendingPreviewMovieCOntainer.appendChild(movieContainer);
-
-    });
+        });
+    } catch (error) {
+        console.log(error.response);
+    }
 }
 
 async function getCategoriesMovies(){
-    const res = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=' + API_KEY);
-    const data = await res.json();
+    const { data } = await api('genre/movie/list');
 
     const categories = data.genres;
     console.log(categories)
