@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/JosueXDa/api-movies-curso-practico/issues"
   },
-  "homepage": "https://github.com/JosueXDa/api-movies-curso-practico#readme"
+  "homepage": "https://github.com/JosueXDa/api-movies-curso-practico#readme",
+  "dependencies": {
+    "axios": "^1.6.8"
+  }
 }

@@ -22,4 +22,28 @@ async function getTrendingMovies(){
     });
 }
 
+async function getCategoriesMovies(){
+    const res = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=' + API_KEY);
+    const data = await res.json();
+
+    const categories = data.genres;
+    console.log(categories)
+
+    categories.forEach(category => {
+        const categoriesPreviewContainer = document.querySelector('#categoriesPreview .categoriesPreview-list');
+        const categoriesContainer = document.createElement('div');
+        categoriesContainer.classList.add('category-container');
+
+        const categoriesTitle = document.createElement('h3');
+        categoriesTitle.classList.add('category-title');
+
+        categoriesTitle.textContent = category.name;
+        categoriesTitle.setAttribute('id', 'id'+category.id);
+
+        categoriesContainer.appendChild(categoriesTitle);
+        categoriesPreviewContainer.appendChild(categoriesContainer);
+
+    });
+}
+getCategoriesMovies();
 getTrendingMovies();
