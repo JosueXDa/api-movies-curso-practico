@@ -59,5 +59,4 @@ async function getCategoriesMovies(){
 
     });
 }
-getCategoriesMovies();
-getTrendingMovies();
+
