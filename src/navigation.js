@@ -98,6 +98,18 @@ function categoryPage( ){
     categoriesPreviewSection.classList.add('inactive');
     genericSection.classList.remove('inactive');
     movieDetailSection.classList.add('inactive');
+
+    const [_, categryData] = location.hash.split('=id');
+    const [categoryID, categoryName] = categryData.split('-');
+    console.log(categoryID, categoryName);
+    headerCategoryTitle.innerHTML = categoryName;
+    getMoviesByCategory(categoryID);
+    // Hacer scroll al principio de la página
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+
 }
 
 function trendsPage(){
